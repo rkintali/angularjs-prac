@@ -16,8 +16,7 @@
 		<div data-ng-repeat="product in store.products | limitTo: 2">
 			<div data-ng-show="!product.soldOut">
 				<h1>{{product.name}}</h1>
-				<h3>
-					<em>{{product.price | currency}}</em>
+				<h3><product-title></product-title>
 				</h3>
 				<p>{{product.description}}</p>
 				<button class="btn btn-default" data-ng-show="product.canPurchase">Add

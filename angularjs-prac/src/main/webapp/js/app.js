@@ -48,4 +48,11 @@
 		}
 	});
 	
+	app.directive('productTitle', function(){
+		return {
+			restrict: 'E',
+			templateUrl: 'src/main/webapp/product-title.html',
+		};
+	});
+	
 })();
