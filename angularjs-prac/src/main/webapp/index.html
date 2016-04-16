@@ -26,13 +26,13 @@
 			</div>
 
 			<section data-ng-controller="panelController as panel">
-				<ul class="nav nav-pills" >
-					<li data-ng-class="{active:panel.isSelected(1)}"><a href="#" data-ng-click="panel.selectTab(1)"
-						>Description</a></li>
-					<li data-ng-class="{active:panel.isSelected(2)}"><a href="#" data-ng-click="panel.selectTab(2)"
-						>Specifications</a></li>
-					<li data-ng-class="{active:panel.isSelected(3)}"><a href="#" data-ng-click="panel.selectTab(3)"
-						>Reviews</a></li>
+				<ul class="nav nav-pills">
+					<li data-ng-class="{active:panel.isSelected(1)}"><a href="#"
+						data-ng-click="panel.selectTab(1)">Description</a></li>
+					<li data-ng-class="{active:panel.isSelected(2)}"><a href="#"
+						data-ng-click="panel.selectTab(2)">Specifications</a></li>
+					<li data-ng-class="{active:panel.isSelected(3)}"><a href="#"
+						data-ng-click="panel.selectTab(3)">Reviews</a></li>
 				</ul>
 				{{panel.tab}}
 				<div class="panel" data-ng-show="panel.isSelected(1)">
@@ -45,6 +45,36 @@
 				</div>
 				<div class="panel" data-ng-show="panel.isSelected(3)">
 					<h4>Reviews</h4>
+					<blockquote data-ng-repeat="review in product.reviews">
+						<b>Stars: {{review.rating}}</b>
+						{{review.comments}}
+						<cite>by: {{review.by}}</cite>
+					</blockquote>
+						
+					<form action="" name="reviewForm" data-ng-controller="reviewController as reviewCtrl" data-ng-submit="reviewCtrl.addReview(product)">
+						<blockquote >
+						<b>Stars: {{reviewCtrl.review.rating}}</b>
+						{{reviewCtrl.review.comments}}
+						<cite>by: {{reviewCtrl.review.by}}</cite>
+					</blockquote>
+						<div class="row">
+							<div class="col-sm-12 form-group" >
+								<select class="form-control" data-ng-model="reviewCtrl.review.rating">
+									<option value="1">1 Stars</option>
+									<option value="2">2 Stars</option>
+									<option value="3">3 Stars</option>
+								</select>
+							</div>
+							<div class="col-sm-12 form-group">
+								<textarea rows="3" cols="5" class="form-control" data-ng-model="reviewCtrl.review.comments"></textarea>
+							</div>
+							<div class="col-sm-12 form-group">
+								<label class="control-label">by:</label> <input class="form-control" data-ng-model="reviewCtrl.review.by" 
+								type="email" /> <br/><input type="submit" class="btn btn-default"
+									value="Submit">
+							</div>
+						</div>
+					</form>
 					<blockquote>Not yet</blockquote>
 				</div>
 			</section>
