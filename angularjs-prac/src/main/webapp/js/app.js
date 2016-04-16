@@ -29,6 +29,7 @@
 			comments : "This is a comment",
 		} ],
 	} ];
+	/*
 	app.controller("panelController", function() {
 		this.tab = 3;
 		this.selectTab = function(selectTab) {
@@ -39,7 +40,7 @@
 		};
 
 	});
-	
+	*/
 	app.controller('reviewController', function(){
 		this.review = {};
 		this.addReview = function(product){
@@ -52,6 +53,24 @@
 		return {
 			restrict: 'E',
 			templateUrl: 'src/main/webapp/product-title.html',
+		};
+	});
+	
+	app.directive('productTabs', function(){
+		return {
+			restrict: 'E',
+			templateUrl: 'src/main/webapp/product-tabs.html',
+			controller: function(){
+				this.tab = 3;
+				this.selectTab = function(selectTab) {
+					this.tab = selectTab;
+				};
+				this.isSelected = function(selectedTab) {
+					return this.tab == selectedTab;
+				};
+
+			},
+			controllerAs: 'panel',
 		};
 	});
 	
