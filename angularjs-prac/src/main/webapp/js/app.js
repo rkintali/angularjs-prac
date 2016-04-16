@@ -19,5 +19,14 @@
 		canPurchase : true,
 		soldOut : false,
 	} ]
-	
+	app.controller("panelController", function() {
+		this.tab = 1;
+		this.selectTab = function(selectTab){
+			this.tab=selectTab;
+		};
+		this.isSelected = function(selectedTab){
+			return this.tab == selectedTab;
+		};
+		
+	})
 })();
